@@ -47,6 +47,24 @@ android {
             }
         }
     }
+
+    clean.dependsOn 'cleanNative'
+
+    tasks.withType(JavaCompile) {
+        compileTask -> compileTask.dependsOn buildNative
+    }
+}
+
+task buildNative(type: Exec, description: 'Compile JNI source via NDK') {
+    def ndkDir = android.ndkDirectory.getAbsolutePath()
+    commandLine ndkDir + "/ndk-build", '-C', file('src/main').absolutePath
+}
+
+task cleanNative(type: Exec, description: 'Clean JNI object files') {
+    def ndkDir = android.ndkDirectory.getAbsolutePath()
+    commandLine "$ndkDir/ndk-build.cmd",
+            '-C', file('src/main/jni').absolutePath,
+            'clean'
 }
 
 dependencies {
