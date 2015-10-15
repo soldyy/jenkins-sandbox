@@ -22,6 +22,7 @@ android {
         }
     }
     sourceSets.main{
+        jni.srcDirs = []
         jniLibs.srcDir 'src/main/jni'
     }
     productFlavors{

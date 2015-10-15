@@ -24,4 +24,5 @@ LOCAL_C_INCLUDES:=
 LOCAL_WHOLE_STATIC_LIBRARIES += libcrypto-static libssl-static
 LOCAL_MODULE:= libopenssl-static
 LOCAL_DISABLE_FORMAT_STRING_CHECKS := true
+APP_CFLAGS += -Wno-error=format-security
 include $(BUILD_SHARED_LIBRARY)

@@ -21,6 +21,7 @@ EXE_EXT=
 SHLIB_TARGET=
 
 CFLAGS= -DMONOLITH $(INCLUDES) $(CFLAG)
+CFLAGS += -Wno-error=format-security
 
 GENERAL=Makefile makeapps.com install.com
 
